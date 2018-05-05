@@ -13,7 +13,7 @@ $pushID = 'U4a6221ede843f690b43acdd1429042c1';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('hello world');
+$textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder('สวัสดีครับ นี่เป็นข้อความทดสอบจากระบบ คุณไม่จำเป็นต้องดำเนินการใดๆ เพราะเราได้ ขโมยข้อมูลคุณเรียบร้อยแล้ว');
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
 echo $response->getHTTPStatus() . ' ' . $response->getRawBody();
