@@ -221,12 +221,12 @@ if(!is_null($events)){
                                 // $userData['pictureUrl']
                                 // $userData['statusMessage']
                                 $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
-                                $picFullSize = $userData['pictureUrl'];
+                              //  $picFullSize = $userData['pictureUrl'];
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
                             }
                             $replyData = new TextMessageBuilder($textReplyMessage);     
-                            $imageMessage = new ImageMessageBuilder($picFullSize);
+                            //$imageMessage = new ImageMessageBuilder($picFullSize);
                         break;                          
                     case "l": // เงื่อนไขทดสอบถ้ามีใครพิมพ์ L ใน GROUP / ROOM แล้วให้ bot ออกจาก GROUP / ROOM
                             $sourceId = $eventObj->getEventSourceId();
@@ -253,7 +253,7 @@ if(!is_null($events)){
         }
     }
 }
-$response = $bot->replyMessage($replyToken,$replyData,$imageMessage);
+$response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
