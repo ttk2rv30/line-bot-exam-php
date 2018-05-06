@@ -220,7 +220,7 @@ if(!is_null($events)){
                                 // $userData['displayName']
                                 // $userData['pictureUrl']
                                 // $userData['statusMessage']
-                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'] .' ' .$userData['pictureUrl'];     
                             }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
                             }
