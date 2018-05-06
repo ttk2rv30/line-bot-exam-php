@@ -25,7 +25,22 @@ if (!is_null($events['events'])) {
 				'type' => 'text',
 				'text' => $text
 			];
-
+//---------------------------------------------
+			$url = 'https://api.line.me/v2/bot/profile/'.$userId;
+$headers = array('Authorization: Bearer ' . $access_token);
+$ch1 = curl_init($url);
+curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch1, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, 1);
+$result = curl_exec($ch1);
+curl_close($ch1);
+$tmp = $result;
+			
+//------------------------------------------
+			
+			
+			
+			
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
@@ -44,7 +59,7 @@ if (!is_null($events['events'])) {
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			echo $result . "\r\n";
+			echo $result . $tmp "\r\n";
 		}
 	}
 }
