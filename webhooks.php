@@ -26,16 +26,23 @@ if (!is_null($events['events'])) {
 				'text' => $text
 			];
 //---------------------------------------------
-			$url = 'https://api.line.me/v2/bot/profile/'.$userId;
+$url = 'https://api.line.me/v2/bot/profile/'.$userId;
+			$data = [
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
+			];
+			$post = json_encode($data);
 $headers = array('Authorization: Bearer ' . $access_token);
-$ch1 = curl_init($url);
-curl_setopt($ch1, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch1, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch1, CURLOPT_FOLLOWLOCATION, 1);
-$result = curl_exec($ch1);
-curl_close($ch1);
-$tmp = $result;
-			
+$ch = curl_init($url);
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+			curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+			$result = curl_exec($ch);
+			curl_close($ch);
+
+			echo $result . $tmp "\r\n";
 //------------------------------------------
 			
 			
