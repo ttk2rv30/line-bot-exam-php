@@ -227,7 +227,33 @@ if(!is_null($events)){
                             }
                             $replyData = new TextMessageBuilder($textReplyMessage);     
                             //$imageMessage = new ImageMessageBuilder($picFullSize);
-                        break;                          
+                        break;  
+                    case "i":
+                  
+                   if(!is_null($groupId) || !is_null($roomId)){
+                                if($eventObj->isGroupEvent()){
+                                    $response = $bot->getGroupMemberProfile($groupId, $userId);
+                                }
+                                if($eventObj->isRoomEvent()){
+                                    $response = $bot->getRoomMemberProfile($roomId, $userId);    
+                                }
+                            }else{
+                                $response = $bot->getProfile($userId);
+                            }
+                            if ($response->isSucceeded()) {
+                                $userData = $response->getJSONDecodedBody(); // return array     
+                                // $userData['userId']
+                                // $userData['displayName']
+                                // $userData['pictureUrl']
+                                // $userData['statusMessage']
+                                //$textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
+                              //  $picFullSize = $userData['pictureUrl'];
+                             
+                           $picFullSize = $userData['pictureUrl'];
+                           $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower/240';
+                           $replyData = new ImageMessageBuilder($picFullSize,$picThumbnail);
+                            }
+                        break;
                     case "l": // เงื่อนไขทดสอบถ้ามีใครพิมพ์ L ใน GROUP / ROOM แล้วให้ bot ออกจาก GROUP / ROOM
                             $sourceId = $eventObj->getEventSourceId();
                             if($eventObj->isGroupEvent()){
