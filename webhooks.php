@@ -41,4 +41,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
+echo $data . "\r\n";
 echo "OK";
