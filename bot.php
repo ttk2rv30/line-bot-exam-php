@@ -220,11 +220,13 @@ if(!is_null($events)){
                                 // $userData['displayName']
                                 // $userData['pictureUrl']
                                 // $userData['statusMessage']
-                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'] .' ' .$userData['pictureUrl'];     
-                            }else{
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
+                                $picFullSize = $userData['pictureUrl'];
+                                }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
                             }
-                            $replyData = new TextMessageBuilder($textReplyMessage);                                                 
+                            $replyData = new TextMessageBuilder($textReplyMessage);     
+                            $imageMessage = new ImageMessageBuilder($picFullSize);
                         break;                          
                     case "l": // เงื่อนไขทดสอบถ้ามีใครพิมพ์ L ใน GROUP / ROOM แล้วให้ bot ออกจาก GROUP / ROOM
                             $sourceId = $eventObj->getEventSourceId();
