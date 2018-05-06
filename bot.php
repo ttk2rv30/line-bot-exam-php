@@ -253,7 +253,7 @@ if(!is_null($events)){
         }
     }
 }
-$response = $bot->replyMessage($replyToken,$replyData);
+$response = $bot->replyMessage($replyToken,$replyData,$imageMessage);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
     return;
