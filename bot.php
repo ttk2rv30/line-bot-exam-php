@@ -158,9 +158,7 @@ if(!is_null($events)){
     }
     // ถ้าเป้น Message Event 
     if(!is_null($eventMessage)){
-     
-     /*
-        switch ($typeMessage){ // กำหนดเงื่อนไขการทำงานจาก ประเภทของ message
+         switch ($typeMessage){ // กำหนดเงื่อนไขการทำงานจาก ประเภทของ message
             case 'text':  // ถ้าเป็นข้อความ
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
@@ -268,7 +266,14 @@ if(!is_null($events)){
                             $replyData = new TextMessageBuilder($textReplyMessage);                                                 
                         break;                                                                                                                                                                                                                                                                      
                     default:
-                        $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+                       $userData = $response->getJSONDecodedBody(); // return array     
+                                // $userData['userId']
+                                // $userData['displayName']
+                                // $userData['pictureUrl']
+                                // $userData['statusMessage']
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. 'คุณพิมพ์ข้อความ : ' . $userMessage ;
+                       // $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+                  
                         $replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
                 }
@@ -281,19 +286,6 @@ if(!is_null($events)){
         }
     }
 }
-*/
-     if ($response->isSucceeded()) {
-                                $userData = $response->getJSONDecodedBody(); // return array     
-                                // $userData['userId']
-                                // $userData['displayName']
-                                // $userData['pictureUrl']
-                                // $userData['statusMessage']
-                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. 'คุณพิมพ์ข้อความ : ' . $userMessage ;     
-                              //  $picFullSize = $userData['pictureUrl'];
-                                }else{
-                                $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
-                            }
-                            $replyData = new TextMessageBuilder($textReplyMessage);
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
     echo 'Succeeded!';
