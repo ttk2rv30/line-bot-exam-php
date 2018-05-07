@@ -266,10 +266,25 @@ if(!is_null($events)){
                             $replyData = new TextMessageBuilder($textReplyMessage);                                                 
                         break;                                                                                                                                                                                                                                                                      
                     default:
+                            $response = $bot->getProfile($userId);
+                            
+                            if ($response->isSucceeded()) {
+                                $userData = $response->getJSONDecodedBody(); // return array     
+                                // $userData['userId']
+                                // $userData['displayName']
+                                // $userData['pictureUrl']
+                                // $userData['statusMessage']
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. 'คุณพิมพ์ข้อความ : ' . $userMessage ;     
+                              //  $picFullSize = $userData['pictureUrl'];
+                                }
+                            $replyData = new TextMessageBuilder($textReplyMessage);     
+                            //$imageMessage = new ImageMessageBuilder($picFullSize);
+                        break;  
+                  /*
                        $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
                   
                         $replyData = new TextMessageBuilder($textReplyMessage);         
-                        break;                                      
+                        break;                                      */
                 }
                 break;                                                  
             default:
