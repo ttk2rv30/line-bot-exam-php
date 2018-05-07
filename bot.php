@@ -158,6 +158,8 @@ if(!is_null($events)){
     }
     // ถ้าเป้น Message Event 
     if(!is_null($eventMessage)){
+     
+     /*
         switch ($typeMessage){ // กำหนดเงื่อนไขการทำงานจาก ประเภทของ message
             case 'text':  // ถ้าเป็นข้อความ
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
@@ -276,7 +278,19 @@ if(!is_null($events)){
                 $textReplyMessage = 'สวัสดีครับ คุณ '.$typeMessage;         
                 $replyData = new TextMessageBuilder($textReplyMessage);         
                 break;  
-        }
+        }*/
+     if ($response->isSucceeded()) {
+                                $userData = $response->getJSONDecodedBody(); // return array     
+                                // $userData['userId']
+                                // $userData['displayName']
+                                // $userData['pictureUrl']
+                                // $userData['statusMessage']
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. 'คุณพิมพ์ข้อความ : ' . $userMessage ;     
+                              //  $picFullSize = $userData['pictureUrl'];
+                                }else{
+                                $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
+                            }
+                            $replyData = new TextMessageBuilder($textReplyMessage);
     }
 }
 $response = $bot->replyMessage($replyToken,$replyData);
