@@ -220,7 +220,7 @@ if(!is_null($events)){
                                 // $userData['displayName']
                                 // $userData['pictureUrl']
                                 // $userData['statusMessage']
-                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. 'คุณพิมพ์ข้อความ : ' . $userMessage ;     
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
                               //  $picFullSize = $userData['pictureUrl'];
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
@@ -274,7 +274,7 @@ if(!is_null($events)){
                                 // $userData['displayName']
                                 // $userData['pictureUrl']
                                 // $userData['statusMessage']
-                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ขข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' คุณพิมพ์ข้อความ : ' . $userMessage ;     
+                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ;     
                               //  $picFullSize = $userData['pictureUrl'];
                                 }
                             $replyData = new TextMessageBuilder($textReplyMessage);     
