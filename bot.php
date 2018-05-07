@@ -278,7 +278,8 @@ if(!is_null($events)){
                 $textReplyMessage = 'สวัสดีครับ คุณ '.$typeMessage;         
                 $replyData = new TextMessageBuilder($textReplyMessage);         
                 break;  
-        }*/
+        }
+    }*/
      if ($response->isSucceeded()) {
                                 $userData = $response->getJSONDecodedBody(); // return array     
                                 // $userData['userId']
@@ -291,7 +292,6 @@ if(!is_null($events)){
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
                             }
                             $replyData = new TextMessageBuilder($textReplyMessage);
-    }
 }
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
