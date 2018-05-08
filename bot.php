@@ -266,6 +266,16 @@ if(!is_null($events)){
                             $replyData = new TextMessageBuilder($textReplyMessage);                                                 
                         break;                                                                                                                                                                                                                                                                      
                     default:
+                  if(!is_null($groupId) || !is_null($roomId)){
+                                if($eventObj->isGroupEvent()){
+                                    $response = $bot->getGroupMemberProfile($groupId, $userId);
+                                }
+                                if($eventObj->isRoomEvent()){
+                                    $response = $bot->getRoomMemberProfile($roomId, $userId);    
+                                }
+                            }else{
+                                $response = $bot->getProfile($userId);
+                            }
                             $response = $bot->getProfile($userId);
                             
                             if ($response->isSucceeded()) {
