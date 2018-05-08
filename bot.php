@@ -220,7 +220,8 @@ if(!is_null($events)){
                                 // $userData['displayName']
                                 // $userData['pictureUrl']
                                 // $userData['statusMessage']
-                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
+                               // $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
+                                  $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
@@ -266,43 +267,20 @@ if(!is_null($events)){
                             $replyData = new TextMessageBuilder($textReplyMessage);                                                 
                         break;                                                                                                                                                                                                                                                                      
                     default:
-                  if(!is_null($groupId) || !is_null($roomId)){
-                                if($eventObj->isGroupEvent()){
-                                    $response = $bot->getGroupMemberProfile($groupId, $userId);
-                                }
-                                if($eventObj->isRoomEvent()){
-                                    $response = $bot->getRoomMemberProfile($roomId, $userId);    
-                                }
-                            }else{
-                                $response = $bot->getProfile($userId);
-                            }
-                            $response = $bot->getProfile($userId);
-                            
-                            if ($response->isSucceeded()) {
-                                $userData = $response->getJSONDecodedBody(); // return array     
-                                // $userData['userId']
-                                // $userData['displayName']
-                                // $userData['pictureUrl']
-                                // $userData['statusMessage']
-                                $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ;     
-                              //  $picFullSize = $userData['pictureUrl'];
-                                }
-                            $replyData = new TextMessageBuilder($textReplyMessage);     
-                            //$imageMessage = new ImageMessageBuilder($picFullSize);
-                        break;  
-                  /*
+
+
                        $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
                   
                         $replyData = new TextMessageBuilder($textReplyMessage);         
-                        break;                                      */
+                        break;                                      
                 }
                 break;                                                  
-           /* default:
+            default:
                 // กรณีทดสอบเงื่อนไขอื่นๆ ผู้ใช้ไม่ได้ส่งเป็นข้อความ
                 $textReplyMessage = 'สวัสดีครับ คุณ '.$typeMessage;         
                 $replyData = new TextMessageBuilder($textReplyMessage);         
                 break;  
-           */
+          // $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ;     
         }
     }
 }
