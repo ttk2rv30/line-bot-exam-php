@@ -287,11 +287,12 @@ if(!is_null($events)){
                         break;                                      */
                 }
                 break;                                                  
-            default:
+           /* default:
                 // กรณีทดสอบเงื่อนไขอื่นๆ ผู้ใช้ไม่ได้ส่งเป็นข้อความ
                 $textReplyMessage = 'สวัสดีครับ คุณ '.$typeMessage;         
                 $replyData = new TextMessageBuilder($textReplyMessage);         
                 break;  
+           */
         }
     }
 }
