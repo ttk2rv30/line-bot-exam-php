@@ -1,5 +1,4 @@
 <?php 
-$response = $bot->replyMessage($replyToken,$replyData);
 $host = "203.146.127.100";
 $user = "lomrak_lpg";
 $passwd = "AG_LPG";
