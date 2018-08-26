@@ -284,11 +284,12 @@ if(!is_null($events)){
         }
     }
 }
-$response = $bot->replyMessage($replyToken,$replyData);
-if ($response->isSucceeded()) {
      require_once("conn.php");
      $sql= "INSERT INTO `lomrak_lpg`.`Line_bot` (`No`, `Line_ID`, `Bill_no`, `Plate_No`) VALUES (NULL, '3', '3', '3')";
      $result = mysql_query($sql);
+$response = $bot->replyMessage($replyToken,$replyData);
+if ($response->isSucceeded()) {
+     
      echo 'Succeeded!';
     return;
 }
