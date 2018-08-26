@@ -11,7 +11,7 @@ require_once __DIR__ .'/vendor/autoload.php';
 require_once 'bot_settings.php';
  
 // กรณีมีการเชื่อมต่อกับฐานข้อมูล
-//require_once("dbconnect.php");
+require_once("dbconnect.php");
  
 ///////////// ส่วนของการเรียกใช้งาน class ผ่าน namespace
 use LINE\LINEBot;
@@ -284,7 +284,6 @@ if(!is_null($events)){
         }
     }
 }
-     require_once("conn.php");
      $sql= "INSERT INTO `lomrak_lpg`.`Line_bot` (`No`, `Line_ID`, `Bill_no`, `Plate_No`) VALUES (NULL, '3', '3', '3')";
      $result = mysql_query($sql);
 $response = $bot->replyMessage($replyToken,$replyData);
