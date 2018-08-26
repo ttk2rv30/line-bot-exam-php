@@ -216,10 +216,10 @@ if(!is_null($events)){
                             }
                             if ($response->isSucceeded()) {
                                 $userData = $response->getJSONDecodedBody(); // return array     
-                                // $userData['userId']
-                                // $userData['displayName']
-                                // $userData['pictureUrl']
-                                // $userData['statusMessage']
+                                $regID =  $userData['userId'];
+                                $regName =  $userData['displayName'];
+                                $regPic = $userData['pictureUrl'];
+                                $regStatus $userData['statusMessage'];
                                // $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
                                   $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
@@ -290,7 +290,7 @@ $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
 $url = 'https://www.lomrak.com/api.php'; 
   
-   $data = $replyData;
+   $param1 = array($regID => $regName => $regPic => $regStatus);
   
   /*$data = array(
         'fn' => "login" 
@@ -300,7 +300,7 @@ $url = 'https://www.lomrak.com/api.php';
   try{
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $url );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $param1 );
     curl_setopt( $ch, CURLOPT_POST, true );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
