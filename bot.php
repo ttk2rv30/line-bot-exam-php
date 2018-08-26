@@ -286,10 +286,12 @@ if(!is_null($events)){
 }
 
 $response = $bot->replyMessage($replyToken,$replyData);
-$url = 'https://www.lomrak.com/api.php'; 
-  //$data="fn=login&test=1";
-   //$param1 = "User_ID=".$regID."&User_Name=".$regName."&User_Pic=".$regPic."&User_Status=".$regStatus;
-  //$param1 = "fn=".$replyData;
+
+if ($response->isSucceeded()) {
+  $url = 'https://www.lomrak.com/api.php'; 
+  
+  $data = "fn=login&test=1";
+  
   /*$data = array(
         'fn' => "login" 
     );*/
@@ -298,7 +300,7 @@ $url = 'https://www.lomrak.com/api.php';
   try{
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $url );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $replyData );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
     curl_setopt( $ch, CURLOPT_POST, true );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
@@ -311,8 +313,7 @@ $url = 'https://www.lomrak.com/api.php';
   
     echo $ex;
   }
-if ($response->isSucceeded()) {
-
+    
      
      echo 'Succeeded!';
     return;
