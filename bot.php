@@ -290,13 +290,24 @@ $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
   
+ $ret =  "mobile_cn=".$data;
+$ch = curl_init(); 
+curl_setopt($ch, CURLOPT_URL, $url); 
+curl_setopt($ch, CURLOPT_POST, 1); 
+curl_setopt($ch, CURLOPT_POSTFIELDS, $ret); 
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
+$result = curl_exec($ch); 
+$error = curl_error($ch); 
+curl_close($ch); 
+ 
   //$data = "fn=login&test=1";
   
   /*$data = array(
         'fn' => "login" 
     );*/
   
-  
+  /*
   try{
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $url );
@@ -313,7 +324,7 @@ if ($response->isSucceeded()) {
   
     echo $ex;
   }
-    
+    */
      
      echo 'Succeeded!';
     return;
