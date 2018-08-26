@@ -284,7 +284,9 @@ if(!is_null($events)){
         }
     }
 }
+
 $response = $bot->replyMessage($replyToken,$replyData);
+
 $host = "203.146.127.100";
 $user = "lomrak_lpg";
 $passwd = "AG_LPG";
@@ -293,6 +295,7 @@ mysql_connect($host, $user, $passwd) or die ("not connect");
 mysql_select_db($dbname) or die ("no table");
 $sql = "INSERT INTO `lomrak_lpg`.`Line_bot` (`No`, `Line_ID`, `Bill_no`, `Plate_No`) VALUES (NULL, '4', '4', '4')";
 $result = mysql_query($sql);
+
 if ($response->isSucceeded()) {
      
      echo 'Succeeded!';
