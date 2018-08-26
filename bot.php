@@ -291,7 +291,7 @@ if ($response->isSucceeded()) {
 $url = 'https://www.lomrak.com/api.php'; 
   
    //$param1 = "User_ID=".$regID."User_Name=".$regName."User_Pic=".$regPic."User_Status=".$regStatus;
-  $param1 = $replyData;
+  $param1 = "fn=".$replyData;
   /*$data = array(
         'fn' => "login" 
     );*/
