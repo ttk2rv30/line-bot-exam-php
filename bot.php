@@ -291,7 +291,7 @@ if ($response->isSucceeded()) {
 $url = 'https://www.lomrak.com/api.php'; 
   //$data="fn=login&test=1";
    //$param1 = "User_ID=".$regID."&User_Name=".$regName."&User_Pic=".$regPic."&User_Status=".$regStatus;
-  $param1 = "fn=".$replyData;
+  //$param1 = "fn=".$replyData;
   /*$data = array(
         'fn' => "login" 
     );*/
@@ -300,7 +300,7 @@ $url = 'https://www.lomrak.com/api.php';
   try{
     $ch = curl_init();
     curl_setopt( $ch, CURLOPT_URL, $url );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $param1 );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $replyData );
     curl_setopt( $ch, CURLOPT_POST, true );
     curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
     curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
