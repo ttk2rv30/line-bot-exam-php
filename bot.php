@@ -287,16 +287,32 @@ if(!is_null($events)){
 
 $response = $bot->replyMessage($replyToken,$replyData);
 
-$host = "203.146.127.100";
-$user = "lomrak_lpg";
-$passwd = "AG_LPG";
-$dbname = "lomrak_lpg";
-mysql_connect($host, $user, $passwd) or die ("not connect");
-mysql_select_db($dbname) or die ("no table");
-$sql = "INSERT INTO `lomrak_lpg`.`Line_bot` (`No`, `Line_ID`, `Bill_no`, `Plate_No`) VALUES (NULL, '4', '4', '4')";
-$result = mysql_query($sql);
-
 if ($response->isSucceeded()) {
+$url = 'https://www.lomrak.com/api.php'; 
+  
+   $data = "fn=login&test=1";
+  
+  /*$data = array(
+        'fn' => "login" 
+    );*/
+  
+  
+  try{
+    $ch = curl_init();
+    curl_setopt( $ch, CURLOPT_URL, $url );
+    curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
+    curl_setopt( $ch, CURLOPT_POST, true );
+    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
+    $content = curl_exec( $ch );
+    curl_close($ch);
+    
+    print_r($content);
+    
+  }catch(Exception $ex){
+  
+    echo $ex;
+  }
      
      echo 'Succeeded!';
     return;
