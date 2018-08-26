@@ -284,16 +284,15 @@ if(!is_null($events)){
         }
     }
 }
-$host ="203.146.127.100";//ชื่อโฮส
-$user ="lomrak_lpg";//ชื่อผู้ใช้
-$pass ="AG_LPG";//รหัสผ่าน
-$db ="lomrak_lpg";//ชื่อฐานข้อมูลที่เราสร้างไว้
-mysql_connect ($host,$user,$pass) or die ("ติดต่อเครื่อง Database Server ไม่สำเร็จ");//ติดต่อ Database Server
-mysql_select_db($db) or die ("ติดต่อฐานข้อมูลไม่สำเร็จ");//ติอต่อฐานข้อมูล
-//mysql_query("SET NAMES utf8")//ตั้งค่าภาษา
-     $sql= "INSERT INTO `lomrak_lpg`.`Line_bot` (`No`, `Line_ID`, `Bill_no`, `Plate_No`) VALUES (NULL, '3', '3', '3')";
-     $result = mysql_query($sql);
 $response = $bot->replyMessage($replyToken,$replyData);
+$host = "203.146.127.100";
+$user = "lomrak_lpg";
+$passwd = "AG_LPG";
+$dbname = "lomrak_lpg";
+mysql_connect($host, $user, $passwd) or die ("not connect");
+mysql_select_db($dbname) or die ("no table");
+$sql = "INSERT INTO `lomrak_lpg`.`Line_bot` (`No`, `Line_ID`, `Bill_no`, `Plate_No`) VALUES (NULL, '4', '4', '4')";
+$result = mysql_query($sql);
 if ($response->isSucceeded()) {
      
      echo 'Succeeded!';
