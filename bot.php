@@ -284,13 +284,13 @@ if(!is_null($events)){
         }
     }
 }
-
+$data = $replyData;
 $response = $bot->replyMessage($replyToken,$replyData);
 
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
   
-  $data = "fn=login&test=1";
+  //$data = "fn=login&test=1";
   
   /*$data = array(
         'fn' => "login" 
