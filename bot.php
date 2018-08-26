@@ -286,30 +286,7 @@ if(!is_null($events)){
 }
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
- 
-$host = "203.146.127.100";
-$user = "lomrak_lpg";
-$passwd = "AG_LPG";
-$dbname = "lomrak_lpg";
-mysql_connect($host, $user, $passwd) or die ("not connect");
-mysql_select_db($dbname) or die ("no table");
-$sql = "INSERT INTO `Line_bot`    ";
-//$sql .= " (`Line_ID` , `Bill_no` , `Plate_No`) ";
-$sql .= " VALUES ";
-$sql .= " (' "."1234"." ' , ' "."4321"." ' , ' "."&#3585;&#3627;&#3588;&#3591;"." '" ;
-$result = mysql_query($sql);
-if ($result)
-  {
-    echo "<br><br><font color='red' size='7'><center>Line1</center></font><br><br>";
-    echo "<center><a href=register.php>Line2</center></a><br><br>";
-    echo "<center><font color='red'><a href=index.html>Line3</a></center></font>";
-  }
-  else
-  {
-    echo "Line4";
-  }
-mysql_close();
-    echo 'Succeeded!';
+     echo 'Succeeded!';
     return;
 }
 // Failed
