@@ -290,7 +290,7 @@ $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
 $url = 'https://www.lomrak.com/api.php'; 
   
-   $param1 = array($regID => $regName => $regPic => $regStatus);
+   $param1 = "User_ID=".$regID."User_Name=".$regName."User_Pic=".$regPic."User_Status".$regStatus;
   
   /*$data = array(
         'fn' => "login" 
