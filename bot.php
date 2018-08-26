@@ -265,7 +265,33 @@ if(!is_null($events)){
                             }                                               
                             $textReplyMessage = 'เชิญ bot ออกจาก Group / Room'; 
                             $replyData = new TextMessageBuilder($textReplyMessage);                                                 
-                        break;                                                                                                                                                                                                                                                                      
+                        break;  
+                  case "z":
+                            if(!is_null($groupId) || !is_null($roomId)){
+                                if($eventObj->isGroupEvent()){
+                                    $response = $bot->getGroupMemberProfile($groupId, $userId);
+                                }
+                                if($eventObj->isRoomEvent()){
+                                    $response = $bot->getRoomMemberProfile($roomId, $userId);    
+                                }
+                            }else{
+                                $response = $bot->getProfile($userId);
+                            }
+                            if ($response->isSucceeded()) {
+                                $userData = $response->getJSONDecodedBody(); // return array     
+                                $regID =  $userData['userId'];
+                                //$regName =  $userData['displayName'];
+                                //$regPic = $userData['pictureUrl'];
+                                //$regStatus $userData['statusMessage'];
+                               // $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
+                                  $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
+                              //  $picFullSize = $userData['pictureUrl'];
+                                }else{
+                                $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
+                            }
+                            $replyData = new TextMessageBuilder($textReplyMessage);     
+                            //$imageMessage = new ImageMessageBuilder($picFullSize);
+                        break;
                     default:
 
 
@@ -290,7 +316,7 @@ $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
   $data="1";
- $ret =  "mobile_cn=".$data;
+ $ret =  "mobile_cn=".$regID;
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, $url); 
 curl_setopt($ch, CURLOPT_POST, 1); 
