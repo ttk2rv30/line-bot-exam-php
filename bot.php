@@ -290,7 +290,7 @@ $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
 $url = 'https://www.lomrak.com/api.php'; 
   
-   $data = "fn=login&test=1";
+   $data = $replyData;
   
   /*$data = array(
         'fn' => "login" 
