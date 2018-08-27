@@ -283,7 +283,7 @@ if(!is_null($events)){
                                 $regName =  $userData['displayName'];
                                 $regPic = $userData['pictureUrl'];
                                 $regStatus = $userData['statusMessage'];
-                                  $textReplyMessage = 'สวัสดีครับ Id ของคุณคือ : ' .$userData['userId'];     
+                                  $textReplyMessage = 'สวัสดีครับ Id ของคุณคือ : ' .$userData['displayName'].' คุณพิมพ์ข้อความ : ' . $userMessage;     
                                 //$textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
                                 }else{
@@ -293,7 +293,13 @@ if(!is_null($events)){
                             //$imageMessage = new ImageMessageBuilder($picFullSize);
                         break;
                     default:
-                       $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+                                $userData = $response->getJSONDecodedBody(); // return array     
+                                $regID =  $userData['userId'];
+                                $regName =  $userData['displayName'];
+                                $regPic = $userData['pictureUrl'];
+                                $regStatus = $userData['statusMessage'];
+                                $textReplyMessage = 'สวัสดีครับคุณ : ' .$userData['displayName'].' เลขที่ใบเสร็จของคุณคือ : ' . $userMessage.' ->> เราจะแจ้งผลการลงทะเบียนให้ทราบภายหลัง ขอบคุณครับ';
+                       //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
                   
                         $replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
