@@ -312,7 +312,7 @@ $data = $replyData;
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
-  $data="7";
+  $data=$userData['userId'];
  $ret =  "mobile_cn=".$data;
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, $url); 
