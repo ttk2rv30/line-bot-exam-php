@@ -123,6 +123,9 @@ if(!is_null($eventMessage)){
     // ถ้าเป็นข้อความ
     if($typeMessage=='text'){
         $userMessage = $eventObj->getText(); // เก็บค่าข้อความที่ผู้ใช้พิมพ์
+        $tmp1 = substr($userMessage, 0, 1);
+        $regBill = substr($userMessage, 1, 6);
+        $userMessage = $tmp1;
     }
     // ถ้าเป็น sticker
     if($typeMessage=='sticker'){
