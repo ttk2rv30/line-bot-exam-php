@@ -290,6 +290,7 @@ if(!is_null($events)){
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
                             }
+                            $textReplyMessage = $textReplyMessage. ">>".$textReplyMessage1;
                             $replyData = new TextMessageBuilder($textReplyMessage);     
                             //$imageMessage = new ImageMessageBuilder($picFullSize);
                         break;
@@ -312,7 +313,7 @@ if(!is_null($events)){
     }
 }
 //global $data;
-$replyData = $replyData." >>> ". $textReplyMessage1;
+//$replyData = $replyData." >>> ". $textReplyMessage1;
 $response = $bot->replyMessage($replyToken,$replyData);
 
 if ($response->isSucceeded()) {
