@@ -279,12 +279,12 @@ if(!is_null($events)){
                             }
                             if ($response->isSucceeded()) {
                                 $userData = $response->getJSONDecodedBody(); // return array     
-                                //$regID =  $userData['userId'];
-                                //$regName =  $userData['displayName'];
-                                //$regPic = $userData['pictureUrl'];
-                                //$regStatus $userData['statusMessage'];
+                                $regID =  $userData['userId'];
+                                $regName =  $userData['displayName'];
+                                $regPic = $userData['pictureUrl'];
+                                $regStatus $userData['statusMessage'];
                                   $textReplyMessage = 'สวัสดีครับ Id ของคุณคือ : ' .$userData['userId'];     
-                                  $textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
+                                //$textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
@@ -312,8 +312,8 @@ $data = $replyData;
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
-  $data=$userData['userId'];
- $ret =  "mobile_cn=".$data;
+  //$data=$userData['userId'];
+ $ret =  "regID=".$regID."&regName=".$regName."&regPic=".$regPic."&regStatus=".$regStatus;
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, $url); 
 curl_setopt($ch, CURLOPT_POST, 1); 
