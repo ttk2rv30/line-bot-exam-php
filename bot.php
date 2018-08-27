@@ -285,7 +285,7 @@ if(!is_null($events)){
                                 //$regStatus $userData['statusMessage'];
                             
                                   $textReplyMessage = 'สวัสดีครับ';     
-                                  $textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
+                                 // $textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
