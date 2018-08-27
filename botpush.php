@@ -12,6 +12,8 @@ $quanlity = isset($_POST['quanlity'])?$_POST['quanlity']:"";
 $p_price = isset($_POST['p_price'])?$_POST['p_price']:"";
 $pos_total = isset($_POST['pos_total'])?$_POST['pos_total']:"";
 $current = isset($_POST['current'])?$_POST['current']:"";
+$Line_ID = isset($_POST['line_id'])?$_POST['line_id']:"";
+
 
 $access_token = 'PLXhyaxl5hdQ/EDzycfAmvv5RdkrX18IWhYMVl9zDVuaJNy84HbAe2wCREG/voLe1OR51zliFQPlgTR/F2qJkrDU+a9OJ5zMkTjwfGdozMtyaz7G+teEosY9BAb7jIGFqAmfob1wSWTmHkzVOje2/QdB04t89/1O/w1cDnyilFU=';
 
