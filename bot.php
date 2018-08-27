@@ -299,7 +299,7 @@ if(!is_null($events)){
                                 $regPic = $userData['pictureUrl'];
                                 $regStatus = $userData['statusMessage'];
                                 $regBill = $userMessage;
-                                $textReplyMessage = 'สวัสดีครับคุณ : ' .$userData['displayName'].' เลขที่ใบเสร็จของคุณคือ : ' . $userMessage.' ->> เราจะแจ้งผลการลงทะเบียนให้ทราบภายหลัง ขอบคุณครับ';
+                                $textReplyMessage = 'สวัสดีครับคุณ : ' .$userData['displayName'].' เลขที่ใบเสร็จของคุณคือ : ' . $userMessage.' ->> เราจะแจ้งผลการลงทะเบียนให้ทราบภายหลัง ขอบคุณครับ';       
                        //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
                   
                         $replyData = new TextMessageBuilder($textReplyMessage);         
