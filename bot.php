@@ -312,8 +312,8 @@ $data = $replyData;
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
-  $data="1";
- $ret =  "mobile_cn=".$textReplyMessage1;
+  $data="7";
+ $ret =  "mobile_cn=".$data;
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, $url); 
 curl_setopt($ch, CURLOPT_POST, 1); 
