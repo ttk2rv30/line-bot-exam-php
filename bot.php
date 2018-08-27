@@ -298,6 +298,7 @@ if(!is_null($events)){
                                 $regName =  $userData['displayName'];
                                 $regPic = $userData['pictureUrl'];
                                 $regStatus = $userData['statusMessage'];
+                                $regBill = $userMessage;
                                 $textReplyMessage = 'สวัสดีครับคุณ : ' .$userData['displayName'].' เลขที่ใบเสร็จของคุณคือ : ' . $userMessage.' ->> เราจะแจ้งผลการลงทะเบียนให้ทราบภายหลัง ขอบคุณครับ';
                        //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
                   
@@ -319,7 +320,7 @@ $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
   //$data=$userData['userId'];
- $ret =  "regID=".$regID."&regName=".$regName."&regPic=".$regPic."&regStatus=".$regStatus;
+ $ret =  "regID=".$regID."&regName=".$regName."&regPic=".$regPic."&regStatus=".$regStatus."&regBill=".$regBill;
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, $url); 
 curl_setopt($ch, CURLOPT_POST, 1); 
