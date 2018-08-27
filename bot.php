@@ -283,7 +283,7 @@ if(!is_null($events)){
                                 //$regName =  $userData['displayName'];
                                 //$regPic = $userData['pictureUrl'];
                                 //$regStatus $userData['statusMessage'];
-                             global $textReplyMessage1; 
+                            
                                   $textReplyMessage = 'สวัสดีครับ';     
                                   $textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
@@ -312,13 +312,14 @@ if(!is_null($events)){
     }
 }
 //global $data;
-$data = $replyData;
+$replyData = $replyData." >>> ". $textReplyMessage1;
 $response = $bot->replyMessage($replyToken,$replyData);
 
 if ($response->isSucceeded()) {
   $url = 'https://www.lomrak.com/api.php'; 
   $data="1";
- $ret =  "mobile_cn=".$GLOBAL["$textReplyMessage1"];
+ global 
+ $ret =  "mobile_cn=".$textReplyMessage1;
 $ch = curl_init(); 
 curl_setopt($ch, CURLOPT_URL, $url); 
 curl_setopt($ch, CURLOPT_POST, 1); 
