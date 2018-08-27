@@ -283,7 +283,7 @@ if(!is_null($events)){
                                 $regName =  $userData['displayName'];
                                 $regPic = $userData['pictureUrl'];
                                 $regStatus = $userData['statusMessage'];
-                                  $textReplyMessage = 'สวัสดีครับ Id ของคุณคือ : ' .$userData['displayName'].' คุณพิมพ์ข้อความ : ' . $userMessage;     
+                                  $textReplyMessage = 'สวัสดีครับคุณ : ' .$userData['displayName'].' คุณได้ลงทะเบียนเรียบร้อยแล้ว ระบบจะทำการแจ้งผลการอนุมัติให้ทราบอีกครั้ง ขอบคุณครับ';     
                                 //$textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
                                 }else{
@@ -293,14 +293,7 @@ if(!is_null($events)){
                             //$imageMessage = new ImageMessageBuilder($picFullSize);
                         break;
                     default:
-                                $userData = $response->getJSONDecodedBody(); // return array     
-                                $regID =  $userData['userId'];
-                                $regName =  $userData['displayName'];
-                                $regPic = $userData['pictureUrl'];
-                                $regStatus = $userData['statusMessage'];
-                                $regBill = $userMessage;
-                                $textReplyMessage = 'สวัสดีครับคุณ : ' .$userData['displayName'].' เลขที่ใบเสร็จของคุณคือ : ' . $userMessage.' ->> เราจะแจ้งผลการลงทะเบียนให้ทราบภายหลัง ขอบคุณครับ';       
-                       //$textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
+                             $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
                   
                         $replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
