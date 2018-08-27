@@ -312,8 +312,7 @@ if(!is_null($events)){
         }
     }
 }
-//global $data;
-//$replyData = $replyData." >>> ". $textReplyMessage1;
+
 $response = $bot->replyMessage($replyToken,$replyData);
 
 if ($response->isSucceeded()) {
