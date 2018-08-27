@@ -24,7 +24,7 @@ $pushID = $Line_ID;//'U9bf72f20279f621e3642b1561a74957f';
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
 
-$sms = "สวัสดีครับ นี่เป็นระบบอัตโนมัติ *** ".$card_name." ได้เข้ามาใช้บริการไปเมื่อวันที่ ". $pos_date ." เวลา " . $pos_time. " เป็นจำนวน ".$pos_total. " บาท ยอดเครดิตปัจจุบันคือ ".$current ." บาท ขอบคุณครับ"; 
+$sms = "*** นี่เป็นระบบอัตโนมัติ *** สวัสดีครับ ".$card_name." ได้เข้ามาใช้บริการไปเมื่อวันที่ ". $pos_date ." เวลา " . $pos_time. " เป็นจำนวน ".$pos_total. " บาท ยอดเครดิตปัจจุบันคือ ".$current ." บาท ขอบคุณครับ"; 
 
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sms);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
