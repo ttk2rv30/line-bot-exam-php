@@ -290,7 +290,7 @@ if(!is_null($events)){
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
                             }
-                            $textReplyMessage = $textReplyMessage. ">>".$textReplyMessage1;
+                            //$textReplyMessage = $textReplyMessage&$textReplyMessage1;
                             $replyData = new TextMessageBuilder($textReplyMessage);     
                             //$imageMessage = new ImageMessageBuilder($picFullSize);
                         break;
