@@ -48,7 +48,7 @@ use LINE\LINEBot\MessageBuilder\TemplateBuilder\ConfirmTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselTemplateBuilder;
 use LINE\LINEBot\MessageBuilder\TemplateBuilder\ImageCarouselColumnTemplateBuilder;
  
- 
+ $ck="No";
 $httpClient = new CurlHTTPClient(LINE_MESSAGE_ACCESS_TOKEN);
 $bot = new LINEBot($httpClient, array('channelSecret' => LINE_MESSAGE_CHANNEL_SECRET));
  
@@ -289,6 +289,7 @@ if(!is_null($events)){
                                   $textReplyMessage = 'สวัสดีครับคุณ : ' .$userData['displayName'].' คุณได้ลงทะเบียนเรียบร้อยแล้ว เลขที่ใบเสร็จของคุณคือ : '.$regBill.' ระบบจะทำการแจ้งผลการอนุมัติให้ทราบอีกครั้ง ขอบคุณครับ';     
                                 //$textReplyMessage1 = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
                               //  $picFullSize = $userData['pictureUrl'];
+                             $ck = "ok";
                                 }else{
                                 $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
                             }
@@ -314,7 +315,8 @@ if(!is_null($events)){
 $data = $replyData;
 $response = $bot->replyMessage($replyToken,$replyData);
 if ($response->isSucceeded()) {
-  $url = 'https://www.lomrak.com/api.php'; 
+ if ($ck="ok"){ 
+ $url = 'https://www.lomrak.com/api.php'; 
   //$data=$userData['userId'];
  $ret =  "regID=".$regID."&regName=".$regName."&regPic=".$regPic."&regStatus=".$regStatus."&regBill=".$regBill;
 $ch = curl_init(); 
@@ -325,33 +327,8 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); 
 $result = curl_exec($ch); 
 $error = curl_error($ch); 
-curl_close($ch); 
- 
-  //$data = "fn=login&test=1";
-  
-  /*$data = array(
-        'fn' => "login" 
-    );*/
-  
-  /*
-  try{
-    $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_URL, $url );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
-    curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt( $ch, CURLOPT_SSL_VERIFYPEER, false );
-    $content = curl_exec( $ch );
-    curl_close($ch);
-    
-    print_r($content);
-    
-  }catch(Exception $ex){
-  
-    echo $ex;
-  }
-    */
-     
+curl_close($ch);
+ }
      echo 'Succeeded!';
     return;
 }
