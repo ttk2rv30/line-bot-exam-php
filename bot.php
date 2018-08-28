@@ -165,99 +165,7 @@ if(!is_null($events)){
             case 'text':  // ถ้าเป็นข้อความ
                 $userMessage = strtolower($userMessage); // แปลงเป็นตัวเล็ก สำหรับทดสอบ
                 switch ($userMessage) {
-                    case "t_b":
-                        // กำหนด action 4 ปุ่ม 4 ประเภท
-                        $actionBuilder = array(
-                            new MessageTemplateActionBuilder(
-                                'Message Template',// ข้อความแสดงในปุ่ม
-                                'This is Text' // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),
-                            new UriTemplateActionBuilder(
-                                'Uri Template', // ข้อความแสดงในปุ่ม
-                                'https://www.ninenik.com'
-                            ),
-                            new DatetimePickerTemplateActionBuilder(
-                                'Datetime Picker', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'reservation',
-                                    'person'=>5
-                                )), // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-                                'datetime', // date | time | datetime รูปแบบข้อมูลที่จะส่ง ในที่นี้ใช้ datatime
-                                substr_replace(date("Y-m-d H:i"),'T',10,1), // วันที่ เวลา ค่าเริ่มต้นที่ถูกเลือก
-                                substr_replace(date("Y-m-d H:i",strtotime("+5 day")),'T',10,1), //วันที่ เวลา มากสุดที่เลือกได้
-                                substr_replace(date("Y-m-d H:i"),'T',10,1) //วันที่ เวลา น้อยสุดที่เลือกได้
-                            ),      
-                            new PostbackTemplateActionBuilder(
-                                'Postback', // ข้อความแสดงในปุ่ม
-                                http_build_query(array(
-                                    'action'=>'buy',
-                                    'item'=>100
-                                )) // ข้อมูลที่จะส่งไปใน webhook ผ่าน postback event
-    //                          'Postback Text'  // ข้อความที่จะแสดงฝั่งผู้ใช้ เมื่อคลิกเลือก
-                            ),      
-                        );
-                        $imageUrl = 'https://www.mywebsite.com/imgsrc/photos/w/simpleflower';
-                        $replyData = new TemplateMessageBuilder('Button Template',
-                            new ButtonTemplateBuilder(
-                                    'button template builder', // กำหนดหัวเรื่อง
-                                    'Please select', // กำหนดรายละเอียด
-                                    $imageUrl, // กำหนด url รุปภาพ
-                                    $actionBuilder  // กำหนด action object
-                            )
-                        );              
-                        break;                                          
-                    case "p":
-                            if(!is_null($groupId) || !is_null($roomId)){
-                                if($eventObj->isGroupEvent()){
-                                    $response = $bot->getGroupMemberProfile($groupId, $userId);
-                                }
-                                if($eventObj->isRoomEvent()){
-                                    $response = $bot->getRoomMemberProfile($roomId, $userId);    
-                                }
-                            }else{
-                                $response = $bot->getProfile($userId);
-                            }
-                            if ($response->isSucceeded()) {
-                                $userData = $response->getJSONDecodedBody(); // return array     
-                                //$regID =  $userData['userId'];
-                                //$regName =  $userData['displayName'];
-                                //$regPic = $userData['pictureUrl'];
-                                //$regStatus $userData['statusMessage'];
-                               // $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
-                                  $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ; 
-                              //  $picFullSize = $userData['pictureUrl'];
-                                }else{
-                                $textReplyMessage = 'สวัสดีครับ คุณคือใคร';
-                            }
-                            $replyData = new TextMessageBuilder($textReplyMessage);     
-                            //$imageMessage = new ImageMessageBuilder($picFullSize);
-                        break;  
-                    case "i":
-                  
-                   if(!is_null($groupId) || !is_null($roomId)){
-                                if($eventObj->isGroupEvent()){
-                                    $response = $bot->getGroupMemberProfile($groupId, $userId);
-                                }
-                                if($eventObj->isRoomEvent()){
-                                    $response = $bot->getRoomMemberProfile($roomId, $userId);    
-                                }
-                            }else{
-                                $response = $bot->getProfile($userId);
-                            }
-                            if ($response->isSucceeded()) {
-                                $userData = $response->getJSONDecodedBody(); // return array     
-                                // $userData['userId']
-                                // $userData['displayName']
-                                // $userData['pictureUrl']
-                                // $userData['statusMessage']
-                                //$textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName'];     
-                              //  $picFullSize = $userData['pictureUrl'];
-                             
-                           $picFullSize = $userData['pictureUrl'];
-                           $picThumbnail = 'https://www.mywebsite.com/imgsrc/photos/f/simpleflower/240';
-                           $replyData = new ImageMessageBuilder($picFullSize,$picThumbnail);
-                            }
-                        break;
+                    
                     case "l": // เงื่อนไขทดสอบถ้ามีใครพิมพ์ L ใน GROUP / ROOM แล้วให้ bot ออกจาก GROUP / ROOM
                             $sourceId = $eventObj->getEventSourceId();
                             if($eventObj->isGroupEvent()){
@@ -298,22 +206,26 @@ if(!is_null($events)){
                         break;
                     default:
                              $textReplyMessage = " คุณไม่ได้พิมพ์ ค่า ตามที่กำหนด";
-                  
-                        $replyData = new TextMessageBuilder($textReplyMessage);         
+                  // *******   งดการโต้ตอบ *******************************  by choke
+                            // $replyData = new TextMessageBuilder($textReplyMessage);         
                         break;                                      
                 }
                 break;                                                  
             default:
                 // กรณีทดสอบเงื่อนไขอื่นๆ ผู้ใช้ไม่ได้ส่งเป็นข้อความ
                 $textReplyMessage = 'สวัสดีครับ คุณ '.$typeMessage;         
-                $replyData = new TextMessageBuilder($textReplyMessage);         
+           
+                  // *******   งดการโต้ตอบ *******************************  by choke
+             //   $replyData = new TextMessageBuilder($textReplyMessage);         
                 break;  
           // $textReplyMessage = 'สวัสดีครับ คุณ '.$userData['displayName']. ' Id ของคุณคือ : ' .$userData['userId']. ' ข้อความสถานะของคุณ : ' .$userData['statusMessage']. ' รูปโปรไฟล์ของคุณ : ' .$userData['pictureUrl']. ' คุณพิมพ์ข้อความ : ' . $userMessage ;     
         }
     }
 }
-$data = $replyData;
+//$data = $replyData;
+if ($replyData !=""){
 $response = $bot->replyMessage($replyToken,$replyData);
+}
 if ($response->isSucceeded()) {
  if ($ck="ok"){ 
  $url = 'https://www.lomrak.com/api.php'; 
