@@ -23,9 +23,9 @@ $pushID = $Line_ID;//'U9bf72f20279f621e3642b1561a74957f';
 
 $httpClient = new \LINE\LINEBot\HTTPClient\CurlHTTPClient($access_token);
 $bot = new \LINE\LINEBot($httpClient, ['channelSecret' => $channelSecret]);
-$t = rand(1,14);
+$t = rand(0,14);
 switch ($t) {
-case 1:
+case 0:
     $g_txt = "บางอย่าง…แค่คิด ก็มีความสุข   บางอย่าง…คิดแล้วสนุก ก็คิดกันไป  บางอย่าง…คิดแล้วทุกข์ จะคิดทำไม  ทุกอย่าง…ไม่ได้ขึ้นกับใคร  อยู่ที่ใจเรา…คิดไปเอง";
     break;
 case 1:
@@ -75,7 +75,7 @@ case 14:
 }
 
 $sms = "[Auto] สวัสดีค่ะ ".$card_name." ได้เข้ามาใช้บริการไปเมื่อวันที่ ". $pos_date ." เวลา " . $pos_time. " เป็นจำนวน ".$pos_total. " บาท ยอดเครดิตปัจจุบันคือ ".$current ." บาท "; 
-$sms = $sms . "*** กำลังใจจาก LPG ค่ะ *** " . $g_txt
+$sms = $sms . "*** กำลังใจจาก LPG ค่ะ *** " . $g_txt;
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sms);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
