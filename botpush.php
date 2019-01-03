@@ -75,7 +75,7 @@ case 14:
 }
 
 $sms = "สวัสดีค่ะ ".$card_name." ได้เข้ามาใช้บริการไปเมื่อวันที่ ". $pos_date ." เวลา " . $pos_time. " เป็นจำนวน ".$pos_total. " บาท ยอดเครดิตปัจจุบันคือ ".$current ." บาท "; 
-$sms = $sms . "*** กำลังใจจาก LPG ค่ะ *** " . $g_txt;
+$sms = $sms . "*** กำลังใจจาก LPG ค่ะ *** " . $g_txt ." ขอบคุณที่ใช้บริการค่ะ :)";
 $textMessageBuilder = new \LINE\LINEBot\MessageBuilder\TextMessageBuilder($sms);
 $response = $bot->pushMessage($pushID, $textMessageBuilder);
 
